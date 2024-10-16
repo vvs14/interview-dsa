@@ -2,18 +2,17 @@ package me.vvs.graphs;
 
 import java.util.*;
 
-public class UndirectedGraph {
+public class DirectedGraph {
+
     private Map<String, List<String>> adjList;
 
-    public UndirectedGraph() {
+    public DirectedGraph() {
         adjList = new HashMap<>();
     }
 
     public void addEdge(String src, String dest) {
         if (!adjList.containsKey(src)) adjList.put(src, new ArrayList());
         adjList.get(src).add(dest);
-        if (!adjList.containsKey(dest)) adjList.put(dest, new ArrayList());
-        adjList.get(dest).add(src);
     }
 
     public List<String> getNeighbours(String vertex) {
@@ -25,8 +24,7 @@ public class UndirectedGraph {
     }
 
     public Optional<String> getAVertex() {
-        Optional<String> firstKeyOptional = adjList.keySet().stream().findFirst();
-        return firstKeyOptional;
+        return adjList.keySet().stream().findFirst();
     }
 
     public List<String> getAllVertices() {
