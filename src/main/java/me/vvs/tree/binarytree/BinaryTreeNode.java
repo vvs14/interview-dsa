@@ -47,4 +47,13 @@ public class BinaryTreeNode {
 
         this.right = right;
     }
+
+    @Override
+    public String toString() {
+        return "BinaryTreeNode{" +
+                "key=" + key +
+                ", left=" + left +
+                ", right=" + right +
+                '}';
+    }
 }

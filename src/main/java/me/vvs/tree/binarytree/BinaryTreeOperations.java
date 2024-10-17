@@ -34,6 +34,27 @@ public class BinaryTreeOperations {
         return root;
     }
 
+    /**
+     * Search and return BinaryTreeNode that has same key as passed.
+     * Assuming non-null key and target.
+     *
+     * @param root
+     * @param target
+     * @return
+     */
+    public boolean searchKey(BinaryTreeNode root, Integer target){
+        if (root == null) return false;
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            BinaryTreeNode node = queue.poll();
+            if (node.getKey() != null && node.getKey().intValue() == target.intValue()) return true;
+            if (!node.isLeftNull()) queue.add(node.getLeft());
+            if (!node.isRightNull()) queue.add(node.getRight());
+        }
+        return false;
+    }
+
     public static void main(String[] args){
 
         /**
@@ -56,6 +77,10 @@ public class BinaryTreeOperations {
         Traversals.levelorder(root);
         ops.insertKey(root, 100);
         Traversals.levelorder(root);
+        assert ops.searchKey(root, 100) == true;
+        assert ops.searchKey(root, 101) == false;
+        assert ops.searchKey(root, 1) == true;
+        assert ops.searchKey(root, 2) == true;
     }
 
 }
