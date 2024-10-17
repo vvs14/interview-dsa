@@ -25,7 +25,7 @@ public class Traversals {
         System.out.print(root.getKey() + "->");
     }
 
-    public void levelorder(BinaryTreeNode root) {
+    public static void levelorder(BinaryTreeNode root) {
         if (root == null) return;
         Queue<BinaryTreeNode> queue = new LinkedList<>();
         queue.add(root);
@@ -35,6 +35,7 @@ public class Traversals {
             if(!currNode.isLeftNull()) queue.add(currNode.getLeft());
             if(!currNode.isRightNull()) queue.add(currNode.getRight());
         }
+        System.out.println();
     }
 
     public static void main(String[] args) {
